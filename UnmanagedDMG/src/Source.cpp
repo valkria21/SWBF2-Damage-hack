@@ -9,12 +9,14 @@ HANDLE hProc;
 extern "C" __declspec(dllexport) DWORD64 getOffset(){
 	LPCSTR sigOFFSET_XDMG = "\x8b\x8a\x50\x01\x00\x00\x49\x8b\x50\x20\xe9";
 	LPCSTR maskOFFSET_XDMG = "xxxxxxxxxxx";
-
+	printf("\ninjection start's, loading addresse's and measuring address id's.");
 	if (GetProcess(L"starwarsbattlefrontii.exe"))
 	{
 		module mod = GetModule(L"starwarsbattlefrontii.exe");
 		DWORD64 XDMG = FindSignature(mod.dwBase, mod.dwSize, sigOFFSET_XDMG, maskOFFSET_XDMG);
 		return XDMG;
+	} else {
+		printf("\nfailed.");
 	}
 	return 0;
 }
