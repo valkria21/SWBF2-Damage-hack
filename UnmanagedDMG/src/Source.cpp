@@ -29,6 +29,7 @@ extern "C" __declspec(dllexport) void damage(int damage)
 		hProc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
 		FirstTime = false;
 	}
+	
 	byte* shellcode = new byte[6]{ 0xb9, 0x00, 0x00, 0x00, 0x00, 0x90 };
 	memcpy(shellcode + 1, &damage, 4);
 	WriteProcessMemory(hProc, reinterpret_cast<LPVOID>(XDMG), shellcode, 6, nullptr);
