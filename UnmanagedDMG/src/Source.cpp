@@ -12,12 +12,15 @@ extern "C" __declspec(dllexport) DWORD64 getOffset(){
 	printf("\ninjection start's, loading addresse's and measuring address id's.");
 	if (GetProcess(L"starwarsbattlefrontii.exe"))
 	{
+		printf("\ninjecting.");
 		module mod = GetModule(L"starwarsbattlefrontii.exe");
 		DWORD64 XDMG = FindSignature(mod.dwBase, mod.dwSize, sigOFFSET_XDMG, maskOFFSET_XDMG);
 		return XDMG;
 	} else {
 		printf("\nfailed.");
 	}
+
+	printf("\nfinished!");
 	return 0;
 }
 
