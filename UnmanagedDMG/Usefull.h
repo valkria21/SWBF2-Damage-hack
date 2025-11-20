@@ -57,6 +57,8 @@ inline module GetModule(const wchar_t* moduleName) {
 }
 
 /** a bitwise allocation for memory which up's the value of the bData by the bMask and compare's string data to allocated data. 
+	also return's false if the data is not exact. */
+
 inline bool MemoryCompare(const BYTE* bData, const BYTE* bMask, const char* szMask) {
 	for (; *szMask; ++szMask, ++bData, ++bMask) {
 		if (*szMask == 'x' && *bData != *bMask) {
