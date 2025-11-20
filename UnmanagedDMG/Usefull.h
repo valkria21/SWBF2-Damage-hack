@@ -20,6 +20,7 @@ module TargetModule;
 HANDLE TargetProcess;
 DWORD64  TargetId;
 
+// measure's the process size. then open's the process. 
 inline HANDLE GetProcess(const wchar_t* processName)
 {
 	HANDLE handle = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
@@ -38,6 +39,7 @@ inline HANDLE GetProcess(const wchar_t* processName)
 	return nullptr;
 }
 
+// take's a screenshot of the process and allocate's a function from the memory. Specifically it take's an address.
 inline module GetModule(const wchar_t* moduleName) {
 	HANDLE hmodule = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, TargetId);
 	MODULEENTRY32 mEntry;
